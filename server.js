@@ -7,10 +7,10 @@ app.get('/', (req, res)=>{
    res.sendFile(__dirname+'/index.html') 
 })
 
-app.get('/SignIn', (req, res)=>{
+app.get('/authx.html', (req, res)=>{
     res.sendFile(__dirname+'/authx.html') 
  })
- app.get('/SignUp', (req, res)=>{
+ app.get('/registration.html', (req, res)=>{
     res.sendFile(__dirname+'/registration.html') 
  })
 
