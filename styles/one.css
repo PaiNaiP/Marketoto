@@ -1,0 +1,125 @@
+.head{
+    width: 100%;
+    display: flex;
+    position: relative;
+    height: 50px;
+}
+.txtlogo{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    background: linear-gradient(0deg, rgba(182,36,214,1) 0%, rgba(107,11,190,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow:  20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+    margin:0 auto;
+    text-align: center;
+    margin-top: 8px;
+}
+.hdblock{
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+}
+.kat{
+    height: 100%;
+    background: #8723C7;
+    margin-left: 10px;
+    width: 150px;
+    border-radius: 25px;
+    display: flex;
+}
+
+.kattxt{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    margin: 15px;
+    color: white;
+    margin-left: 7px;
+}
+.katic{
+    width: 20px;
+    height: 20px;
+
+}
+.imgkat{
+    width: 15px;
+    margin-left: 15px;
+}
+.search{
+    border: solid;
+    border-color: #8723C7;
+    height: 91%;
+    margin-left: 15px;
+    width: 350px;
+    border-radius: 25px;
+    display: flex;
+}
+.txtsearch{
+    border: none;
+    height: 50%;
+    margin: 11px;
+    width: 280px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    outline: none;
+}
+.searchbut{
+    height: 40px;
+    background-color: #8723C7;
+    width: 40px;
+    border-radius: 50%;
+    margin-top: 2px;
+}
+.searchlog{
+    height: 25px;
+    margin: 7px;
+}
+.authic{
+    width: 22px;
+    margin-left: 19px;
+    margin-top: -6px;
+}
+.txtauth{
+    font-family: 'Nunito', sans-serif;
+    color: #8723C7;
+    margin-top: -14px;
+    margin-left: 8px;
+}
+.auth{
+    margin-left: 8px;
+}
+.favorites{
+    margin-left: 14px;
+}
+.favoricon{
+    width: 32px;
+    margin-left: 34px;
+    margin-top: 7px;
+}
+.favortxt{
+    font-family: 'Nunito', sans-serif;
+    color: #8723C7;
+    margin-top: -3px;
+    margin-left: 10px;
+}
+
+.cart{
+    margin-left: 19px;
+}
+
+.carticon{
+    width: 25px;
+    margin-left: 17px;
+    margin-top: -11px;
+}
+
+.carttxt{
+    font-family: 'Nunito', sans-serif;
+    color: #8723C7;
+    margin-top: -21px;
+}
+a{
+    text-decoration: none;
+}

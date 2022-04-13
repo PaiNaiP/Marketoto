@@ -1,0 +1,160 @@
+body{
+    overflow: hidden;
+    display:flex;
+}
+.cont{
+    width: 25%;
+    height: 550px;
+    border-radius: 38px;
+background: #ffffff;
+box-shadow:  7px 7px 14px #d9d9d9,
+             -7px -7px 14px #ffffff;
+             margin-left: 57%;
+             margin-top: 4.5%;
+             align-items: center;
+             position: absolute;
+}
+
+.logo{
+    width: 100px;
+    margin: 0 auto;
+    margin-left: 37.5%;
+    
+}
+.txtblocks{
+    margin-top: -20px;
+}
+.emt{
+    width: 60%;
+    margin: 0 auto;
+    margin: 2px;
+    margin-left: 15%;
+    text-decoration: none;
+    outline: none;
+    background-color: #FFF4F6;
+    border: none;
+    height: 33px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: #E54363;
+    padding: 0 15px;
+    border-radius: 5px;
+
+}
+input::-webkit-input-placeholder { 
+    color: #DA8395; 
+    margin-top: 5px;
+    margin-left: -3px;
+}
+.emtxt{
+    color: #950B27;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    margin-left: 16%;
+    margin-top: 10px;
+}
+a{
+    margin-top: 10px;
+}
+.pss{
+        display: flex;
+        width: 60%;
+        margin: 0 auto;
+        margin: 2px;
+        margin-left: 15%;
+        text-decoration: none;
+        outline: none;
+        background-color: #FFF4F6;
+        border: none;
+        height: 33px;
+        font-family: 'Nunito', sans-serif;
+        font-size: 14px;
+        color: #E54363;
+        padding: 0 15px;
+        border-radius: 5px;
+ 
+    
+}
+.psinp{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    width: 95%;
+    border-radius: 5px;
+    text-decoration: none;
+    padding:  0 2px;
+    color: #E54363;
+}
+.password_btn{
+    width: 20px;
+    margin-top: 8px;
+}
+
+.signin{
+    margin: 20px;
+    margin-left: 15%;
+    width: 67.5%;
+    background: #FF92A2;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    height: 33px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #b36b76;
+    font-family: 'Glory', sans-serif;
+    color:white;
+    font-size: 14px;
+    padding: 0 3px;
+    font-weight:600;
+    margin-top: 25px;
+}
+.crss{
+    color: #DA8395;
+font-family: 'Inter', sans-serif;
+font-size: 13px;
+margin: 0 auto;
+margin-left: 30%;
+}
+.signup{
+    color: #DA8395;
+font-family: 'Inter', sans-serif;
+font-size: 13px;
+
+}
+
+.TXTBLC{
+    margin-top: 7px;
+
+}
+.people{
+    margin-top: 10%;
+    width: 600px;
+}
+.dal{
+    margin-left: 16%;
+    margin-top: 3%;
+    position: absolute;
+}
+.wlcbc{
+    /* WELCOME BACK */
+
+/* WELCOME TO MARKETOTO */
+
+position: absolute;
+width: 428px;
+height: 146px;
+left: 40px;
+top: -20PX;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 900;
+font-size: 54px;
+line-height: 73px;
+
+color: #FF92A2;
+
+
+
+
+}
