@@ -106,7 +106,7 @@ a{
     font-size: 14px;
     padding: 0 3px;
     font-weight:600;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 .crss{
     color: #DA8395;
@@ -114,6 +114,7 @@ font-family: 'Inter', sans-serif;
 font-size: 13px;
 margin: 0 auto;
 margin-left: 30%;
+margin-top: -10PX;
 }
 .signup{
     color: #DA8395;
@@ -157,4 +158,38 @@ color: #FF92A2;
 
 
 
+}
+
+.rdbtnx{
+    display: flex;
+    margin-top: 15px;
+}
+
+.rdbt{
+
+    margin-top: px;
+    accent-color: #DA8395;
+}
+
+.rdbtnx{
+    margin-top: 5px;
+    margin-left: 90px;
+}
+label{
+    color: #950B27;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;   
+
+}
+
+.rdbt2{
+
+    margin-top: 3px;
+    margin-left: 20px;
+    accent-color: #DA8395;
+    ascent-override: NONE;
+}
+
+.t{
+    margin-left: 40px;
 }
