@@ -2,7 +2,7 @@
        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
        import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-       import { getDatabase, ref, set, child, get} from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js'
+     
        // TODO: Add SDKs for Firebase products that you want to use
        // https://firebase.google.com/docs/web/setup#available-libraries
      
@@ -52,20 +52,8 @@
 
        })
 
-       const db = getDatabase()
 
-       const email = document.getElementById('email')
-       const password = document.getElementById('password-input')
-       const name = document.getElementById('name')
-       const dateofbrth = document.getElementById('datePickerId')
 
-       function Validation(){
-           let nameregex = /[a-zA-Z0-9]+@(gmail|yahoo|outlook|yandex|rambler)\.(com|ru)/
-       
-    }
 
-function RegisterUser(){
-    Validation()
-    const dbRef = ref(db)
-    get(child(dbRef, 'UsersList'))
-}
+
+
