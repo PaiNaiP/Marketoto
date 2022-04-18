@@ -1,61 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/animations.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="/styles/authx.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/img/Goodies - Monster Sad.png" type="image/x-icon">
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/animations.js" type="module" defer></script>
+    <script src="./js/auth.js" type="module" defer></script>
+    <link rel="stylesheet" type="text/css" href="/styles/authx.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="/img/Goodies - Monster Sad.png"
+      type="image/x-icon"
+    />
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
-    <script src="/js/firebs.js" type="module" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script> -->
     <title>Авторизация</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="cont">
-        <svg class="logo" width="148" height="148" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="74" cy="74" r="74" fill="#FF92A2"/>
-            <path d="M31 104.126L43.7273 111L69.9305 31L72.9251 81.9785L101 37.1098L87.8984 111" stroke="white" stroke-width="15" stroke-linecap="round"/>
-            </svg> 
-                        
-            <div class="txtblocks">
-                <div class="TXTBLC">
-                    <div class="emtxt">Email</div>
-                    <input type="email" id="em" class="emt" placeholder="mail@mail.com">
-                </div>
-                <div class="TXTBLC">
-                    <div class="emtxt">Пароль</div>
-                    <div class="pss"> 
-                        <input id="password-input" name="password" type="password" class="psinp"  placeholder="Password">
-                        <div class="password_btn" onclick="showPassword()" ><img id="ps_btn" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiNkYTgzOTUiPjxwYXRoIGQ9Ik04NiwyOC42NjY2N2MtNTEuMTMxNTcsMCAtODQuMTU5NjcsNTIuODEwNzcgLTg0Ljc1NzAzLDUzLjc3MjM5Yy0wLjgwNDA2LDEuMDEyODMgLTEuMjQyMSwyLjI2Nzc1IC0xLjI0Mjk3LDMuNTYwOTRjMC4wMDEwMiwxLjEwOTQgMC4zMjM4OCwyLjE5NDY3IDAuOTI5NDMsMy4xMjQyMmMwLjAwNzQzLDAuMDExMjIgMC4wMTQ4OSwwLjAyMjQyIDAuMDIyNCwwLjAzMzU5YzAuMDk4NTgsMC4yMDM0MiAyNy44MjI4MSw1NC4xNzU1MiA4NS4wNDgxOCw1NC4xNzU1MmM1Ni45ODI1OCwwIDg0LjY2NiwtNTMuNDQxODggODUuMDAzMzksLTU0LjA5NzE0YzAuMDIyODIsLTAuMDM3MDcgMC4wNDUyMiwtMC4wNzQ0IDAuMDY3MTksLTAuMTExOThjMC42MDU1NSwtMC45Mjk1NSAwLjkyODQxLC0yLjAxNDgyIDAuOTI5NDIsLTMuMTI0MjJjLTAuMDAwMiwtMS4yODgwMiAtMC40MzQxMSwtMi41Mzg0NSAtMS4yMzE3NywtMy41NDk3NGMtMC4wMDM3MywtMC4wMDM3NCAtMC4wMDc0NiwtMC4wMDc0NyAtMC4wMTEyLC0wLjAxMTJjLTAuNTk3MzYsLTAuOTYxNjMgLTMzLjYyNTQ2LC01My43NzIzOSAtODQuNzU3MDMsLTUzLjc3MjM5ek04Niw0NS44NjY2N2MyMi4xNjUwNywwIDQwLjEzMzMzLDE3Ljk2ODI3IDQwLjEzMzMzLDQwLjEzMzMzYzAsMjIuMTY1MDcgLTE3Ljk2ODI3LDQwLjEzMzMzIC00MC4xMzMzMyw0MC4xMzMzM2MtMjIuMTY1MDcsMCAtNDAuMTMzMzMsLTE3Ljk2ODI3IC00MC4xMzMzMywtNDAuMTMzMzNjMCwtMjIuMTY1MDcgMTcuOTY4MjcsLTQwLjEzMzMzIDQwLjEzMzMzLC00MC4xMzMzM3pNODYsNjguOGMtOS40OTkzLDAgLTE3LjIsNy43MDA3IC0xNy4yLDE3LjJjMCw5LjQ5OTMgNy43MDA3LDE3LjIgMTcuMiwxNy4yYzkuNDk5MywwIDE3LjIsLTcuNzAwNyAxNy4yLC0xNy4yYzAsLTkuNDk5MyAtNy43MDA3LC0xNy4yIC0xNy4yLC0xNy4yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+" alt=""></div>
-                    </div>
-                    <a href="#" class="emtxt">Забыли пароль?</a>
-                </div>
-                <button class="signin" id="sign">Войти</button>
-                <div class="crss">
-                    Нет аккаунта?
-                    <a href="/registration.html" class="signup">Создать</a>
-                </div>
-                <svg class="or" width="363" height="8" viewBox="0 0 363 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line y1="2.5" x2="170" y2="2.5" stroke="#7F0A22"/>
-                    <line x1="193" y1="2.5" x2="363" y2="2.5" stroke="#7F0A22"/>
-                    <path d="M179.58 7.13636C178.989 7.13636 178.47 6.99574 178.024 6.71449C177.581 6.43324 177.234 6.03977 176.984 5.53409C176.737 5.02841 176.614 4.4375 176.614 3.76136C176.614 3.07955 176.737 2.48437 176.984 1.97585C177.234 1.46733 177.581 1.07244 178.024 0.791193C178.47 0.509943 178.989 0.369318 179.58 0.369318C180.17 0.369318 180.688 0.509943 181.131 0.791193C181.577 1.07244 181.923 1.46733 182.17 1.97585C182.42 2.48437 182.545 3.07955 182.545 3.76136C182.545 4.4375 182.42 5.02841 182.17 5.53409C181.923 6.03977 181.577 6.43324 181.131 6.71449C180.688 6.99574 180.17 7.13636 179.58 7.13636ZM179.58 6.23295C180.028 6.23295 180.398 6.1179 180.688 5.88778C180.977 5.65767 181.192 5.35511 181.331 4.98011C181.47 4.60511 181.54 4.19886 181.54 3.76136C181.54 3.32386 181.47 2.91619 181.331 2.53835C181.192 2.16051 180.977 1.85511 180.688 1.62216C180.398 1.3892 180.028 1.27273 179.58 1.27273C179.131 1.27273 178.761 1.3892 178.472 1.62216C178.182 1.85511 177.967 2.16051 177.828 2.53835C177.689 2.91619 177.619 3.32386 177.619 3.76136C177.619 4.19886 177.689 4.60511 177.828 4.98011C177.967 5.35511 178.182 5.65767 178.472 5.88778C178.761 6.1179 179.131 6.23295 179.58 6.23295ZM184.081 7V0.454545H185.052V1.44318H185.12C185.24 1.11932 185.456 0.856534 185.768 0.654829C186.081 0.453125 186.433 0.352272 186.825 0.352272C186.899 0.352272 186.991 0.353693 187.102 0.356534C187.213 0.359375 187.297 0.363636 187.353 0.369318V1.39205C187.319 1.38352 187.241 1.37074 187.119 1.35369C187 1.33381 186.873 1.32386 186.74 1.32386C186.422 1.32386 186.137 1.39062 185.887 1.52415C185.64 1.65483 185.444 1.83665 185.299 2.0696C185.157 2.29972 185.086 2.5625 185.086 2.85795V7H184.081Z" fill="#7F0A22"/>
-                    </svg>
-                    <div class="buttonsreg">
-                        <button class="google" id="google"><img class="gogimg" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiM3ZjBhMjIiPjxwYXRoIGQ9Ik04Ni4wMjIzOSwxNy4yYy0zOC4wMDYyNywwIC02OC44MjIzOSwzMC44MDUyIC02OC44MjIzOSw2OC44YzAsMzcuOTk0OCAzMC44MTYxMyw2OC44IDY4LjgyMjM5LDY4LjhjNTcuMzkwNjcsMCA3MC4zMjAzMiwtNTMuMjc5ODcgNjQuOTM2NzIsLTgwLjI2NjY3aC03LjYyNTc4aC0xMy4wMDA3OGgtNDQuMzMyNTV2MjIuOTMzMzNoNDQuMzY2MTRjLTUuMTAwMjUsMTkuNzY5OTcgLTIzLjAwNCwzNC40IC00NC4zNjYxNCwzNC40Yy0yNS4zMjk4NywwIC00NS44NjY2NywtMjAuNTM2OCAtNDUuODY2NjcsLTQ1Ljg2NjY3YzAsLTI1LjMyOTg3IDIwLjUzNjgsLTQ1Ljg2NjY3IDQ1Ljg2NjY3LC00NS44NjY2N2MxMS41MTgyNywwIDIyLjAxMTA4LDQuMjc1NjMgMzAuMDY2NDEsMTEuMjg3NWwxNi4yOTI5NywtMTYuMjgxNzdjLTEyLjIzNDk0LC0xMS4xNDU2IC0yOC40ODkxMiwtMTcuOTM5MDYgLTQ2LjMzNjk4LC0xNy45MzkwNnoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg==" alt=""></button>
-                        <!-- <button class="twitter"><img class="gogimg" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiM3ZjBhMjIiPjxwYXRoIGQ9Ik0xNjAuNTMzMzMsMzkuNzcyMTNjLTUuNDg2OCwyLjQzNjY3IC0xMS4zODA2Nyw0LjA3NjQgLTE3LjU2NjkzLDQuODE2YzYuMzE4MTMsLTMuNzg0IDExLjE2MjgsLTkuNzc1MzMgMTMuNDQ0NjcsLTE2LjkxOTA3Yy01LjkwNTMzLDMuNTAzMDcgLTEyLjQ1MjgsNi4wNDg2NyAtMTkuNDI0NTMsNy40MjQ2N2MtNS41Nzg1MywtNS45NDU0NyAtMTMuNTI0OTMsLTkuNjYwNjcgLTIyLjMxOTg3LC05LjY2MDY3Yy0xNi44OTA0LDAgLTMwLjU4MTYsMTMuNjk2OTMgLTMwLjU4MTYsMzAuNTgxNmMwLDIuMzk2NTMgMC4yNzUyLDQuNzM1NzMgMC43OTEyLDYuOTY2Yy0yNS40MTU4NywtMS4yNzI4IC00Ny45NDc4NywtMTMuNDUwNCAtNjMuMDM4LC0zMS45NTc2Yy0yLjYyNTg3LDQuNTE3ODcgLTQuMTMzNzMsOS43Njk2IC00LjEzMzczLDE1LjM4MjUzYzAsMTAuNjA2NjcgNS4zOTUwNywxOS45NjkyIDEzLjU5OTQ3LDI1LjQ1MDI3Yy01LjAxMDkzLC0wLjE2MDUzIC05LjcyOTQ3LC0xLjUzNjUzIC0xMy44NTE3MywtMy44MjQxM2MwLDAuMTMxODcgMCwwLjI1MjI3IDAsMC4zODQxM2MwLDE0LjgyMDY3IDEwLjUzNzg3LDI3LjE4MTczIDI0LjUzMjkzLDI5Ljk4NTMzYy0yLjU2MjgsMC42OTk0NyAtNS4yNjg5MywxLjA3MjEzIC04LjA2MTA3LDEuMDcyMTNjLTEuOTY2NTMsMCAtMy44ODcyLC0wLjE5NDkzIC01Ljc1MDUzLC0wLjU0NDY3YzMuODkyOTMsMTIuMTQ4OTMgMTUuMTg3NiwyMC45OTU0NyAyOC41NjkyLDIxLjI0MmMtMTAuNDYzMzMsOC4yMDQ0IC0yMy42NSwxMy4wOTQ5MyAtMzcuOTgzMzMsMTMuMDk0OTNjLTIuNDY1MzMsMCAtNC45MDIsLTAuMTQzMzMgLTcuMjk4NTMsLTAuNDNjMTMuNTM2NCw4LjY3NDUzIDI5LjYwNjkzLDEzLjczNzA3IDQ2Ljg4MTQ3LDEzLjczNzA3YzU2LjI1NTQ3LDAgODcuMDA5MDcsLTQ2LjYwMDUzIDg3LjAwOTA3LC04Ny4wMTQ4YzAsLTEuMzI0NCAtMC4wMjg2NywtMi42NDMwNyAtMC4wODYsLTMuOTU2YzUuOTc5ODcsLTQuMzE3MiAxMS4xNjg1MywtOS43MDA4IDE1LjI2Nzg3LC0xNS44Mjk3M3oiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg==" alt=""></button> -->
-                    </div>
-            </div>           
+      <svg
+        class="logo"
+        width="148"
+        height="148"
+        viewBox="0 0 148 148"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="74" cy="74" r="74" fill="#FF92A2" />
+        <path
+          d="M31 104.126L43.7273 111L69.9305 31L72.9251 81.9785L101 37.1098L87.8984 111"
+          stroke="white"
+          stroke-width="15"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <div class="txtblocks">
+        <div class="TXTBLC">
+          <div class="emtxt">Email</div>
+          <input type="email" id="em" class="emt" placeholder="mail@mail.com" />
+        </div>
+        <div class="TXTBLC">
+          <div class="emtxt">Пароль</div>
+          <div class="pss">
+            <input
+              id="password-input"
+              name="password"
+              type="password"
+              class="psinp"
+              placeholder="Password"
+            />
+            <div class="password_btn" onclick="showPassword()">
+              <img
+                id="ps_btn"
+                src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiNkYTgzOTUiPjxwYXRoIGQ9Ik04NiwyOC42NjY2N2MtNTEuMTMxNTcsMCAtODQuMTU5NjcsNTIuODEwNzcgLTg0Ljc1NzAzLDUzLjc3MjM5Yy0wLjgwNDA2LDEuMDEyODMgLTEuMjQyMSwyLjI2Nzc1IC0xLjI0Mjk3LDMuNTYwOTRjMC4wMDEwMiwxLjEwOTQgMC4zMjM4OCwyLjE5NDY3IDAuOTI5NDMsMy4xMjQyMmMwLjAwNzQzLDAuMDExMjIgMC4wMTQ4OSwwLjAyMjQyIDAuMDIyNCwwLjAzMzU5YzAuMDk4NTgsMC4yMDM0MiAyNy44MjI4MSw1NC4xNzU1MiA4NS4wNDgxOCw1NC4xNzU1MmM1Ni45ODI1OCwwIDg0LjY2NiwtNTMuNDQxODggODUuMDAzMzksLTU0LjA5NzE0YzAuMDIyODIsLTAuMDM3MDcgMC4wNDUyMiwtMC4wNzQ0IDAuMDY3MTksLTAuMTExOThjMC42MDU1NSwtMC45Mjk1NSAwLjkyODQxLC0yLjAxNDgyIDAuOTI5NDIsLTMuMTI0MjJjLTAuMDAwMiwtMS4yODgwMiAtMC40MzQxMSwtMi41Mzg0NSAtMS4yMzE3NywtMy41NDk3NGMtMC4wMDM3MywtMC4wMDM3NCAtMC4wMDc0NiwtMC4wMDc0NyAtMC4wMTEyLC0wLjAxMTJjLTAuNTk3MzYsLTAuOTYxNjMgLTMzLjYyNTQ2LC01My43NzIzOSAtODQuNzU3MDMsLTUzLjc3MjM5ek04Niw0NS44NjY2N2MyMi4xNjUwNywwIDQwLjEzMzMzLDE3Ljk2ODI3IDQwLjEzMzMzLDQwLjEzMzMzYzAsMjIuMTY1MDcgLTE3Ljk2ODI3LDQwLjEzMzMzIC00MC4xMzMzMyw0MC4xMzMzM2MtMjIuMTY1MDcsMCAtNDAuMTMzMzMsLTE3Ljk2ODI3IC00MC4xMzMzMywtNDAuMTMzMzNjMCwtMjIuMTY1MDcgMTcuOTY4MjcsLTQwLjEzMzMzIDQwLjEzMzMzLC00MC4xMzMzM3pNODYsNjguOGMtOS40OTkzLDAgLTE3LjIsNy43MDA3IC0xNy4yLDE3LjJjMCw5LjQ5OTMgNy43MDA3LDE3LjIgMTcuMiwxNy4yYzkuNDk5MywwIDE3LjIsLTcuNzAwNyAxNy4yLC0xNy4yYzAsLTkuNDk5MyAtNy43MDA3LC0xNy4yIC0xNy4yLC0xNy4yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+"
+                alt=""
+              />
+            </div>
+          </div>
+          <a href="#" class="emtxt">Забыли пароль?</a>
+        </div>
+        <button class="signin" id="sign">Войти</button>
+        <div class="crss">
+          Нет аккаунта?
+          <a href="/registration.html" class="signup">Создать</a>
+        </div>
+        <svg
+          class="or"
+          width="363"
+          height="8"
+          viewBox="0 0 363 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line y1="2.5" x2="170" y2="2.5" stroke="#7F0A22" />
+          <line x1="193" y1="2.5" x2="363" y2="2.5" stroke="#7F0A22" />
+          <path
+            d="M179.58 7.13636C178.989 7.13636 178.47 6.99574 178.024 6.71449C177.581 6.43324 177.234 6.03977 176.984 5.53409C176.737 5.02841 176.614 4.4375 176.614 3.76136C176.614 3.07955 176.737 2.48437 176.984 1.97585C177.234 1.46733 177.581 1.07244 178.024 0.791193C178.47 0.509943 178.989 0.369318 179.58 0.369318C180.17 0.369318 180.688 0.509943 181.131 0.791193C181.577 1.07244 181.923 1.46733 182.17 1.97585C182.42 2.48437 182.545 3.07955 182.545 3.76136C182.545 4.4375 182.42 5.02841 182.17 5.53409C181.923 6.03977 181.577 6.43324 181.131 6.71449C180.688 6.99574 180.17 7.13636 179.58 7.13636ZM179.58 6.23295C180.028 6.23295 180.398 6.1179 180.688 5.88778C180.977 5.65767 181.192 5.35511 181.331 4.98011C181.47 4.60511 181.54 4.19886 181.54 3.76136C181.54 3.32386 181.47 2.91619 181.331 2.53835C181.192 2.16051 180.977 1.85511 180.688 1.62216C180.398 1.3892 180.028 1.27273 179.58 1.27273C179.131 1.27273 178.761 1.3892 178.472 1.62216C178.182 1.85511 177.967 2.16051 177.828 2.53835C177.689 2.91619 177.619 3.32386 177.619 3.76136C177.619 4.19886 177.689 4.60511 177.828 4.98011C177.967 5.35511 178.182 5.65767 178.472 5.88778C178.761 6.1179 179.131 6.23295 179.58 6.23295ZM184.081 7V0.454545H185.052V1.44318H185.12C185.24 1.11932 185.456 0.856534 185.768 0.654829C186.081 0.453125 186.433 0.352272 186.825 0.352272C186.899 0.352272 186.991 0.353693 187.102 0.356534C187.213 0.359375 187.297 0.363636 187.353 0.369318V1.39205C187.319 1.38352 187.241 1.37074 187.119 1.35369C187 1.33381 186.873 1.32386 186.74 1.32386C186.422 1.32386 186.137 1.39062 185.887 1.52415C185.64 1.65483 185.444 1.83665 185.299 2.0696C185.157 2.29972 185.086 2.5625 185.086 2.85795V7H184.081Z"
+            fill="#7F0A22"
+          />
+        </svg>
+        <div class="buttonsreg">
+          <button class="google" id="google">
+            <img
+              class="gogimg"
+              src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiM3ZjBhMjIiPjxwYXRoIGQ9Ik04Ni4wMjIzOSwxNy4yYy0zOC4wMDYyNywwIC02OC44MjIzOSwzMC44MDUyIC02OC44MjIzOSw2OC44YzAsMzcuOTk0OCAzMC44MTYxMyw2OC44IDY4LjgyMjM5LDY4LjhjNTcuMzkwNjcsMCA3MC4zMjAzMiwtNTMuMjc5ODcgNjQuOTM2NzIsLTgwLjI2NjY3aC03LjYyNTc4aC0xMy4wMDA3OGgtNDQuMzMyNTV2MjIuOTMzMzNoNDQuMzY2MTRjLTUuMTAwMjUsMTkuNzY5OTcgLTIzLjAwNCwzNC40IC00NC4zNjYxNCwzNC40Yy0yNS4zMjk4NywwIC00NS44NjY2NywtMjAuNTM2OCAtNDUuODY2NjcsLTQ1Ljg2NjY3YzAsLTI1LjMyOTg3IDIwLjUzNjgsLTQ1Ljg2NjY3IDQ1Ljg2NjY3LC00NS44NjY2N2MxMS41MTgyNywwIDIyLjAxMTA4LDQuMjc1NjMgMzAuMDY2NDEsMTEuMjg3NWwxNi4yOTI5NywtMTYuMjgxNzdjLTEyLjIzNDk0LC0xMS4xNDU2IC0yOC40ODkxMiwtMTcuOTM5MDYgLTQ2LjMzNjk4LC0xNy45MzkwNnoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg=="
+              alt=""
+            />
+          </button>
+          <!-- <button class="twitter"><img class="gogimg" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiM3ZjBhMjIiPjxwYXRoIGQ9Ik0xNjAuNTMzMzMsMzkuNzcyMTNjLTUuNDg2OCwyLjQzNjY3IC0xMS4zODA2Nyw0LjA3NjQgLTE3LjU2NjkzLDQuODE2YzYuMzE4MTMsLTMuNzg0IDExLjE2MjgsLTkuNzc1MzMgMTMuNDQ0NjcsLTE2LjkxOTA3Yy01LjkwNTMzLDMuNTAzMDcgLTEyLjQ1MjgsNi4wNDg2NyAtMTkuNDI0NTMsNy40MjQ2N2MtNS41Nzg1MywtNS45NDU0NyAtMTMuNTI0OTMsLTkuNjYwNjcgLTIyLjMxOTg3LC05LjY2MDY3Yy0xNi44OTA0LDAgLTMwLjU4MTYsMTMuNjk2OTMgLTMwLjU4MTYsMzAuNTgxNmMwLDIuMzk2NTMgMC4yNzUyLDQuNzM1NzMgMC43OTEyLDYuOTY2Yy0yNS40MTU4NywtMS4yNzI4IC00Ny45NDc4NywtMTMuNDUwNCAtNjMuMDM4LC0zMS45NTc2Yy0yLjYyNTg3LDQuNTE3ODcgLTQuMTMzNzMsOS43Njk2IC00LjEzMzczLDE1LjM4MjUzYzAsMTAuNjA2NjcgNS4zOTUwNywxOS45NjkyIDEzLjU5OTQ3LDI1LjQ1MDI3Yy01LjAxMDkzLC0wLjE2MDUzIC05LjcyOTQ3LC0xLjUzNjUzIC0xMy44NTE3MywtMy44MjQxM2MwLDAuMTMxODcgMCwwLjI1MjI3IDAsMC4zODQxM2MwLDE0LjgyMDY3IDEwLjUzNzg3LDI3LjE4MTczIDI0LjUzMjkzLDI5Ljk4NTMzYy0yLjU2MjgsMC42OTk0NyAtNS4yNjg5MywxLjA3MjEzIC04LjA2MTA3LDEuMDcyMTNjLTEuOTY2NTMsMCAtMy44ODcyLC0wLjE5NDkzIC01Ljc1MDUzLC0wLjU0NDY3YzMuODkyOTMsMTIuMTQ4OTMgMTUuMTg3NiwyMC45OTU0NyAyOC41NjkyLDIxLjI0MmMtMTAuNDYzMzMsOC4yMDQ0IC0yMy42NSwxMy4wOTQ5MyAtMzcuOTgzMzMsMTMuMDk0OTNjLTIuNDY1MzMsMCAtNC45MDIsLTAuMTQzMzMgLTcuMjk4NTMsLTAuNDNjMTMuNTM2NCw4LjY3NDUzIDI5LjYwNjkzLDEzLjczNzA3IDQ2Ljg4MTQ3LDEzLjczNzA3YzU2LjI1NTQ3LDAgODcuMDA5MDcsLTQ2LjYwMDUzIDg3LjAwOTA3LC04Ny4wMTQ4YzAsLTEuMzI0NCAtMC4wMjg2NywtMi42NDMwNyAtMC4wODYsLTMuOTU2YzUuOTc5ODcsLTQuMzE3MiAxMS4xNjg1MywtOS43MDA4IDE1LjI2Nzg3LC0xNS44Mjk3M3oiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg==" alt=""></button> -->
+        </div>
+      </div>
     </div>
     <div class="dal">
-        <div class="wlcbc">WELCOME BACK</div>
-        <img class="people" src="https://blush.design/api/download?shareUri=92TTaCcyqCUFVPI7&c=Hair_0%7Eff953b-0.2%7Eff953b-0.3%7Ef26037_Outfit_0%7E2b121a-0.2%7E2b121a-0.3%7E7f0a22_Skin_0%7Ef5a37b-0.2%7Ef5a37b-0.3%7E53303b&w=800&h=800&fm=png" alt="">
+      <div class="wlcbc">WELCOME BACK</div>
+      <img
+        class="people"
+        src="https://blush.design/api/download?shareUri=92TTaCcyqCUFVPI7&c=Hair_0%7Eff953b-0.2%7Eff953b-0.3%7Ef26037_Outfit_0%7E2b121a-0.2%7E2b121a-0.3%7E7f0a22_Skin_0%7Ef5a37b-0.2%7Ef5a37b-0.3%7E53303b&w=800&h=800&fm=png"
+        alt=""
+      />
     </div>
-
-</body>
+  </body>
 </html>
