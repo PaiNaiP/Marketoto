@@ -1,69 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/js/animations.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
-<script src="/js/firebs.js" id="MainScript" defer></script>
-    <link rel="stylesheet" href="/styles/rigstration.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/img/Goodies - Monster Sad.png" type="image/x-icon">
-    <script src="/js/firebs.js" type="module" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+    <script
+      src="/js/auth.js"
+      type="text/javascript"
+      id="MainScript"
+      defer
+    ></script>
+    <link rel="stylesheet" href="/styles/rigstration.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="/img/Goodies - Monster Sad.png"
+      type="image/x-icon"
+    />
     <title>Регистрация</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="dal">
-        <div class="wlcbc">WELCOME TO MARKETOTO</div>
-        <img class="people" src="https://blush.design/api/download?shareUri=07ryFe512JOwRegH&c=Hair_0%7Ee64360-0.6%7Ef26037_Outfit_0%7E2b121a-0.6%7Eff92a2_Skin_0%7Ef5a37b-0.6%7Ef8bc9a&w=800&h=800&fm=png" alt="">
+      <div class="wlcbc">WELCOME TO MARKETOTO</div>
+      <img
+        class="people"
+        src="https://blush.design/api/download?shareUri=07ryFe512JOwRegH&c=Hair_0%7Ee64360-0.6%7Ef26037_Outfit_0%7E2b121a-0.6%7Eff92a2_Skin_0%7Ef5a37b-0.6%7Ef8bc9a&w=800&h=800&fm=png"
+        alt=""
+      />
     </div>
     <div class="cont">
-        <svg class="logo" width="148" height="148" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="74" cy="74" r="74" fill="#FF92A2"/>
-            <path d="M31 104.126L43.7273 111L69.9305 31L72.9251 81.9785L101 37.1098L87.8984 111" stroke="white" stroke-width="15" stroke-linecap="round"/>
-            </svg> 
-                        
-            <div class="txtblocks">
-                <div class="TXTBLC">
-                    <div class="emtxt">Email</div>
-                    <input type="email" id="email" class="emt" placeholder="mail@mail.com">
-                </div>
-                <div class="TXTBLC">
-                    <div class="emtxt">Пароль</div>
-                    <div class="pss"> 
-                        <input id="password-input"  name="password" type="password" class="psinp"  placeholder="Password">
-                        <div class="password_btn" onclick="showPassword()" ><img id="ps_btn" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiNkYTgzOTUiPjxwYXRoIGQ9Ik04NiwyOC42NjY2N2MtNTEuMTMxNTcsMCAtODQuMTU5NjcsNTIuODEwNzcgLTg0Ljc1NzAzLDUzLjc3MjM5Yy0wLjgwNDA2LDEuMDEyODMgLTEuMjQyMSwyLjI2Nzc1IC0xLjI0Mjk3LDMuNTYwOTRjMC4wMDEwMiwxLjEwOTQgMC4zMjM4OCwyLjE5NDY3IDAuOTI5NDMsMy4xMjQyMmMwLjAwNzQzLDAuMDExMjIgMC4wMTQ4OSwwLjAyMjQyIDAuMDIyNCwwLjAzMzU5YzAuMDk4NTgsMC4yMDM0MiAyNy44MjI4MSw1NC4xNzU1MiA4NS4wNDgxOCw1NC4xNzU1MmM1Ni45ODI1OCwwIDg0LjY2NiwtNTMuNDQxODggODUuMDAzMzksLTU0LjA5NzE0YzAuMDIyODIsLTAuMDM3MDcgMC4wNDUyMiwtMC4wNzQ0IDAuMDY3MTksLTAuMTExOThjMC42MDU1NSwtMC45Mjk1NSAwLjkyODQxLC0yLjAxNDgyIDAuOTI5NDIsLTMuMTI0MjJjLTAuMDAwMiwtMS4yODgwMiAtMC40MzQxMSwtMi41Mzg0NSAtMS4yMzE3NywtMy41NDk3NGMtMC4wMDM3MywtMC4wMDM3NCAtMC4wMDc0NiwtMC4wMDc0NyAtMC4wMTEyLC0wLjAxMTJjLTAuNTk3MzYsLTAuOTYxNjMgLTMzLjYyNTQ2LC01My43NzIzOSAtODQuNzU3MDMsLTUzLjc3MjM5ek04Niw0NS44NjY2N2MyMi4xNjUwNywwIDQwLjEzMzMzLDE3Ljk2ODI3IDQwLjEzMzMzLDQwLjEzMzMzYzAsMjIuMTY1MDcgLTE3Ljk2ODI3LDQwLjEzMzMzIC00MC4xMzMzMyw0MC4xMzMzM2MtMjIuMTY1MDcsMCAtNDAuMTMzMzMsLTE3Ljk2ODI3IC00MC4xMzMzMywtNDAuMTMzMzNjMCwtMjIuMTY1MDcgMTcuOTY4MjcsLTQwLjEzMzMzIDQwLjEzMzMzLC00MC4xMzMzM3pNODYsNjguOGMtOS40OTkzLDAgLTE3LjIsNy43MDA3IC0xNy4yLDE3LjJjMCw5LjQ5OTMgNy43MDA3LDE3LjIgMTcuMiwxNy4yYzkuNDk5MywwIDE3LjIsLTcuNzAwNyAxNy4yLC0xNy4yYzAsLTkuNDk5MyAtNy43MDA3LC0xNy4yIC0xNy4yLC0xNy4yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+" alt=""></div>
-                    </div>
-                    <div class="TXTBLC">
-                        <div class="emtxt">Имя</div>
-                        <input type="text" id="name" class="emt" placeholder="Имя">
-                    </div>
-                    <div class="TXTBLC">
-                        <div class="emtxt">День рождения</div>
-                        <input type="date" class="emt" value="today"
-                        min="1950-01-01" max="today" id="datePickerId"> 
-                    </div>
-                    <div class="rdbtns">
-                        <div class="emtxt">Пол:</div>
-                        <div class="rdbtnx">
-                            <input type="radio" name="gen" class="rdbt" id="genm">
-                            <label for="radio-1">Мужской</label>
-                            <input type="radio" name="gen" class="rdbt2" id="genf" checked="checked">
-                            <label for="radio-1">Женский</label>
-                        </div>
-                    </div>
-                </div>
-                <button class="signin" id="insert">Зарегистрироваться</button>
-                <div class="crss">
-                    Есть аккаунт?
-                    <a href="/authx.html" class="signup">Войти</a>
-                </div>
-            </div>           
+      <svg
+        class="logo"
+        width="148"
+        height="148"
+        viewBox="0 0 148 148"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="74" cy="74" r="74" fill="#FF92A2" />
+        <path
+          d="M31 104.126L43.7273 111L69.9305 31L72.9251 81.9785L101 37.1098L87.8984 111"
+          stroke="white"
+          stroke-width="15"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <div class="txtblocks">
+        <div class="TXTBLC">
+          <div class="emtxt">Email</div>
+          <input
+            type="email"
+            id="email"
+            class="emt"
+            placeholder="mail@mail.com"
+          />
+        </div>
+        <div class="TXTBLC">
+          <div class="emtxt">Пароль</div>
+          <div class="pss">
+            <input
+              id="password-input"
+              name="password"
+              type="password"
+              class="psinp"
+              placeholder="Password"
+            />
+            <div class="password_btn" onclick="showPassword()">
+              <img
+                id="ps_btn"
+                src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiNkYTgzOTUiPjxwYXRoIGQ9Ik04NiwyOC42NjY2N2MtNTEuMTMxNTcsMCAtODQuMTU5NjcsNTIuODEwNzcgLTg0Ljc1NzAzLDUzLjc3MjM5Yy0wLjgwNDA2LDEuMDEyODMgLTEuMjQyMSwyLjI2Nzc1IC0xLjI0Mjk3LDMuNTYwOTRjMC4wMDEwMiwxLjEwOTQgMC4zMjM4OCwyLjE5NDY3IDAuOTI5NDMsMy4xMjQyMmMwLjAwNzQzLDAuMDExMjIgMC4wMTQ4OSwwLjAyMjQyIDAuMDIyNCwwLjAzMzU5YzAuMDk4NTgsMC4yMDM0MiAyNy44MjI4MSw1NC4xNzU1MiA4NS4wNDgxOCw1NC4xNzU1MmM1Ni45ODI1OCwwIDg0LjY2NiwtNTMuNDQxODggODUuMDAzMzksLTU0LjA5NzE0YzAuMDIyODIsLTAuMDM3MDcgMC4wNDUyMiwtMC4wNzQ0IDAuMDY3MTksLTAuMTExOThjMC42MDU1NSwtMC45Mjk1NSAwLjkyODQxLC0yLjAxNDgyIDAuOTI5NDIsLTMuMTI0MjJjLTAuMDAwMiwtMS4yODgwMiAtMC40MzQxMSwtMi41Mzg0NSAtMS4yMzE3NywtMy41NDk3NGMtMC4wMDM3MywtMC4wMDM3NCAtMC4wMDc0NiwtMC4wMDc0NyAtMC4wMTEyLC0wLjAxMTJjLTAuNTk3MzYsLTAuOTYxNjMgLTMzLjYyNTQ2LC01My43NzIzOSAtODQuNzU3MDMsLTUzLjc3MjM5ek04Niw0NS44NjY2N2MyMi4xNjUwNywwIDQwLjEzMzMzLDE3Ljk2ODI3IDQwLjEzMzMzLDQwLjEzMzMzYzAsMjIuMTY1MDcgLTE3Ljk2ODI3LDQwLjEzMzMzIC00MC4xMzMzMyw0MC4xMzMzM2MtMjIuMTY1MDcsMCAtNDAuMTMzMzMsLTE3Ljk2ODI3IC00MC4xMzMzMywtNDAuMTMzMzNjMCwtMjIuMTY1MDcgMTcuOTY4MjcsLTQwLjEzMzMzIDQwLjEzMzMzLC00MC4xMzMzM3pNODYsNjguOGMtOS40OTkzLDAgLTE3LjIsNy43MDA3IC0xNy4yLDE3LjJjMCw5LjQ5OTMgNy43MDA3LDE3LjIgMTcuMiwxNy4yYzkuNDk5MywwIDE3LjIsLTcuNzAwNyAxNy4yLC0xNy4yYzAsLTkuNDk5MyAtNy43MDA3LC0xNy4yIC0xNy4yLC0xNy4yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="TXTBLC">
+            <div class="emtxt">Имя</div>
+            <input type="text" id="name" class="emt" placeholder="Имя" />
+          </div>
+          <div class="TXTBLC">
+            <div class="emtxt">День рождения</div>
+            <input
+              type="date"
+              class="emt"
+              value="today"
+              min="1950-01-01"
+              max="today"
+              id="datePickerId"
+            />
+          </div>
+          <div class="rdbtns">
+            <div class="emtxt">Пол:</div>
+            <div class="rdbtnx">
+              <input type="radio" name="gen" class="rdbt" id="genm" />
+              <label for="radio-1">Мужской</label>
+              <input
+                type="radio"
+                name="gen"
+                class="rdbt2"
+                id="genf"
+                checked="checked"
+              />
+              <label for="radio-1">Женский</label>
+            </div>
+          </div>
+        </div>
+        <button class="signin" id="insert">Зарегистрироваться</button>
+        <div class="crss">
+          Есть аккаунт?
+          <a href="/authx.html" class="signup">Войти</a>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
